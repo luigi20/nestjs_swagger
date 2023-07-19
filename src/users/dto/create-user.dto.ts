@@ -1,21 +1,22 @@
-import { ApiProperty } from '@nestjs/swagger';
-
 export class CreateUserDto {
-  @ApiProperty({
-    description: 'Nome utilizado para ser exibido dados do perfil',
-    example: 'Luís Antônio',
-  })
+  /**
+   * O nome será utilizado para qualquer coisa (Perfil, Home Page, etc) que precise exibir
+   * informações da pessoa conectada.
+   * @example Paulo
+   */
   name: string;
 
-  @ApiProperty({
-    description: 'Email utilizado para login',
-    example: 'luisantonio@gmail.com',
-  })
+  /**
+   * O e-mail é necessário apra o login, mas não necessariamente precisa ser o mesmo e-mail da
+   * rede social que estiver conectada. Login sem rede social precisa de uma senha.
+   * @example email@email.com
+   */
   email: string;
 
-  @ApiProperty({
-    description: 'senha utilizado para login',
-    example: '123456',
-  })
-  password: string;
+  /**
+   * É possível conectar com redes sociais sem uma senha, mas para login usando o e-mail diretamente
+   * é necessário informar uma senha.
+   * @example 123@abc
+   */
+  password?: string;
 }
